@@ -6,10 +6,23 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "ruanbeihong",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coffee-toolbox/fsm.git"
+  },
+  "keywords": [
+    "actor"
+  ],
+  "author": "James Ruan <ruanbeihong@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coffee-toolbox/fsm/issues"
+  },
+  "homepage": "https://github.com/coffee-toolbox/fsm#readme",
   "dependencies": {
-    "@coffee-box/actor": "https://github.com/coffee-toolbox/actor.git",
+    "@coffee-toolbox/actor": "git+https://github.com/coffee-toolbox/actor.git"
+  },
+  "devDependencies": {
     "coffee-loader": "^0.7.2",
     "coffee-script": "^1.12.2"
   }
