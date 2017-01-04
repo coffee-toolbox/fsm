@@ -4,14 +4,14 @@ An actor-based Finite State Machine
 ## State and StateHandlers
 `@state` is a string that store the current state of the machine.
 When `@nextState new_state` is called, `@state` will change to the `new_state`
-and the StateHandler registered through `@setStateHandlers` will be handling
-the new State.
+and the StateHandler registered through `@setStateHandlers` will handle the
+new State.
 
 Internally, a `'$to_state'` message is sent when `@nextState` called, as is
 shown by the example below.
 
 ## Example
-```coffeescripts
+```coffeescript
 {FSM} = require('@coffee-toolbox/fsm')
 
 class FSMTester extends FSM
@@ -43,10 +43,12 @@ class FSMTester extends FSM
 		setTimeout =>
 			@$send_to this, 'stop'
 		, 1000
+		@$next()
 
 	do_stop: =>
 		@logger.log @state
-		@logger.log done
+		@logger.log 'done'
+		@$next()
 
 a = new FSMTester()
 a.$send_to a, 'start', 'start working'
@@ -69,4 +71,17 @@ a.$send_to a, 'start', 'start working'
 # FSMTester => FSMTester:
 #   stop
 #  : undefined
+# FSMTester <= FSMTester:
+#   stop
+#  : undefined
+# FSMTester stopping
+# FSMTester => FSMTester:
+#   $to_state
+#  : { state: 'STOPPED', args: [] }
+# FSMTester <= FSMTester:
+#   $to_state
+#  : { state: 'STOPPED', args: [] }
+# FSMTester STOPPED
+# FSMTester done
+
 ```

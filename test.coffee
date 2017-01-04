@@ -29,10 +29,12 @@ class FSMTester extends FSM
 		setTimeout =>
 			@$send_to this, 'stop'
 		, 1000
+		@$next()
 
 	do_stop: =>
 		@logger.log @state
-		@logger.log done
+		@logger.log 'done'
+		@$next()
 
 a = new FSMTester()
 a.$send_to a, 'start', 'start working'
