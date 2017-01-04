@@ -1,0 +1,16 @@
+{
+  "name": "@coffee-toolbox/fsm",
+  "version": "1.0.0",
+  "description": "An actor-based Finite State Machine",
+  "main": "FSM.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ruanbeihong",
+  "license": "ISC",
+  "dependencies": {
+    "@coffee-box/actor": "https://github.com/coffee-toolbox/actor.git",
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.12.2"
+  }
+}
