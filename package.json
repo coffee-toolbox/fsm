@@ -11,7 +11,7 @@
     "url": "git+https://github.com/coffee-toolbox/fsm.git"
   },
   "keywords": [
-    "actor"
+    "actor", "fsm"
   ],
   "author": "James Ruan <ruanbeihong@gmail.com>",
   "license": "MIT",
