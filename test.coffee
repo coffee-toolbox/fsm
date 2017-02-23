@@ -2,7 +2,7 @@
 
 class FSMTester extends FSM
 	constructor: ->
-		super
+		super {debug: true}
 		@setStateHandlers
 			STARTED: @do_start
 			STOPPED: @do_stop

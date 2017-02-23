@@ -1,6 +1,6 @@
 {
   "name": "@coffee-toolbox/fsm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An actor-based Finite State Machine",
   "main": "FSM.coffee",
   "scripts": {

@@ -34,7 +34,7 @@ shown by the example below.
 
 class FSMTester extends FSM
 	constructor: ->
-		super
+		super {debug: true}
 		@setStateHandlers
 			STARTED: @do_start
 			STOPPED: @do_stop
@@ -71,35 +71,36 @@ class FSMTester extends FSM
 a = new FSMTester()
 a.$send_to a, 'start', 'start working'
 
-# FSMTester => FSMTester:
-#   start
-#  : start working
-# FSMTester <= FSMTester:
-#   start
-#  : start working
-# FSMTester starting
-# FSMTester => FSMTester:
-#   $to_state
-#  : { state: 'STARTED', args: [ 'start working' ] }
-# FSMTester <= FSMTester:
-#   $to_state
-#  : { state: 'STARTED', args: [ 'start working' ] }
-# FSMTester STARTED
-# FSMTester start working
-# FSMTester => FSMTester:
-#   stop
-#  : undefined
-# FSMTester <= FSMTester:
-#   stop
-#  : undefined
-# FSMTester stopping
-# FSMTester => FSMTester:
-#   $to_state
-#  : { state: 'STOPPED', args: [] }
-# FSMTester <= FSMTester:
-#   $to_state
-#  : { state: 'STOPPED', args: [] }
-# FSMTester STOPPED
-# FSMTester done
-
+###
+FSMTester => FSMTester:
+  start
+ : start working
+FSMTester <= FSMTester:
+  start
+ : start working
+FSMTester starting
+FSMTester => FSMTester:
+  $run_state_handler
+ : { state: 'STARTED', args: [ 'start working' ] }
+FSMTester <= FSMTester:
+  $run_state_handler
+ : { state: 'STARTED', args: [ 'start working' ] }
+FSMTester STARTED
+FSMTester start working
+FSMTester => FSMTester:
+  stop
+ : undefined
+FSMTester <= FSMTester:
+  stop
+ : undefined
+FSMTester stopping
+FSMTester => FSMTester:
+  $run_state_handler
+ : { state: 'STOPPED', args: [] }
+FSMTester <= FSMTester:
+  $run_state_handler
+ : { state: 'STOPPED', args: [] }
+FSMTester STOPPED
+FSMTester done
+###
 ```
