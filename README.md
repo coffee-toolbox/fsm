@@ -25,7 +25,8 @@ When `@nextState new_state` is called, `@state` will change to the `new_state`
 and the StateHandler registered through `@setStateHandlers` will handle the
 new State.
 
-Internally, a `'$to_state'` message is sent when `@nextState` called, as is
+Internally, new state is set by calling `$set_new_state`. Then a
+`'$run_state_handler'` message is sent when `@nextState` called, as is
 shown by the example below.
 
 ## Example
