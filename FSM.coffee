@@ -5,7 +5,12 @@ class FSM extends Actor
 	constructor: (config)->
 		super config
 		@state = 'INIT'
-		@stateHandler = {}
+		@stateHandler =
+			TERMINATED: (reason)=>
+				if reason?
+					@logger.info 'termintated', reason
+				else
+					@logger.info 'termintated'
 
 	$start: (reg)->
 		reg ?= {}
@@ -34,7 +39,7 @@ class FSM extends Actor
 	# State :: string
 	# setup StateHandlers.
 	setStateHandlers: (reg)->
-		@stateHandler = Object.assign {}, reg
+		@stateHandler = Object.assign {}, @stateHandler, reg
 
 module.exports =
 	FSM: FSM

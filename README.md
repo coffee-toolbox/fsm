@@ -67,7 +67,7 @@ class FSMTester extends FSM
 	do_stop: =>
 		@logger.log @state
 		@logger.log 'done'
-		@$next()
+		@nextState 'TERMINATED'
 
 a = new FSMTester()
 a.$send_to a, 'start', 'start working'
@@ -103,5 +103,12 @@ FSMTester <= FSMTester:
  : { state: 'STOPPED', args: [] }
 FSMTester STOPPED
 FSMTester done
+FSMTester => FSMTester:
+  $run_state_handler
+ : { state: 'TERMINATED', args: [] }
+FSMTester <= FSMTester:
+  $run_state_handler
+ : { state: 'TERMINATED', args: [] }
+FSMTester termintated
 ###
 ```
