@@ -7,10 +7,11 @@ class FSM extends Actor
 		@state = 'INIT'
 		@stateHandler =
 			TERMINATED: (reason)=>
+				@$terminate(reason)
 				if reason?
-					@logger.info 'termintated', reason
+					@logger.info 'terminated', reason
 				else
-					@logger.info 'termintated'
+					@logger.info 'terminated'
 
 	$start: (reg)->
 		reg ?= {}
